@@ -127,7 +127,7 @@ const CaseStudyView = ({ project, onBack, isDarkMode }: { project: any, onBack: 
         </div>
       </div>
 
-      <div className="bg-ink text-bg p-12 md:p-24 rounded-3xl mb-32">
+      <div className="bg-ink text-bg p-12 md:p-24 mb-32">
         <h2 className="text-3xl md:text-5xl font-medium mb-12">Key Results</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
@@ -208,9 +208,9 @@ export default function App() {
         </div>
         <div className="flex items-center gap-8 md:gap-12">
           <div className="hidden md:flex gap-12 text-sm font-medium uppercase tracking-widest">
-            <button onClick={() => setCurrentView('home')} className="hover:text-accent transition-colors">Work</button>
-            <a href="#about" className="hover:text-accent transition-colors">About</a>
-            <a href="#contact" className="hover:text-accent transition-colors">Contact</a>
+            <button onClick={() => setCurrentView('home')} className="hover:text-accent transition-colors">WORK</button>
+            <a href="#about" className="hover:text-accent transition-colors">ABOUT</a>
+            <a href="#contact" className="hover:text-accent transition-colors">CONTACT</a>
           </div>
           
           <button 
@@ -247,9 +247,9 @@ export default function App() {
         transition={{ type: "spring", damping: 25, stiffness: 200 }}
         className="fixed inset-0 bg-ink z-40 flex flex-col items-center justify-center gap-8 text-white md:hidden"
       >
-        <button onClick={() => { setCurrentView('home'); setIsMenuOpen(false); }} className="text-4xl font-medium">Work</button>
-        <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-4xl font-medium">About</a>
-        <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-medium">Contact</a>
+        <button onClick={() => { setCurrentView('home'); setIsMenuOpen(false); }} className="text-4xl font-medium uppercase tracking-widest">WORK</button>
+        <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-4xl font-medium uppercase tracking-widest">ABOUT</a>
+        <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-medium uppercase tracking-widest">CONTACT</a>
       </motion.div>
 
       <AnimatePresence mode="wait">
