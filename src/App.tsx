@@ -1,6 +1,33 @@
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowUpRight, Menu, X, Sun, Moon } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ArrowUpRight, ArrowLeft, Menu, X, Sun, Moon } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+
+const projects = [
+  {
+    id: 1,
+    title: "Aether Platform",
+    category: "UX / UI Design",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2000"
+  },
+  {
+    id: 2,
+    title: "Lumina Mobile",
+    category: "Product Strategy",
+    image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&q=80&w=2000"
+  },
+  {
+    id: 3,
+    title: "Kinetix Brand",
+    category: "Visual Identity",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=2000"
+  },
+  {
+    id: 4,
+    title: "Zenith Dashboard",
+    category: "Interface Design",
+    image: "https://images.unsplash.com/photo-1581291518062-c9a7941a3f34?auto=format&fit=crop&q=80&w=2000"
+  }
+];
 
 const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => (
   <div className="flex items-center h-10 md:h-12">
@@ -57,101 +84,113 @@ const ProjectCard = ({ title, category, image, index, onClick }: { title: string
   </motion.div>
 );
 
-const CaseStudyView = ({ project, onBack, isDarkMode }: { project: any, onBack: () => void, isDarkMode: boolean, key?: any }) => (
-  <motion.div 
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    className="min-h-screen pt-32 pb-24 px-6 md:px-12"
-  >
-    <button 
-      onClick={onBack}
-      className="flex items-center gap-2 text-xs uppercase tracking-widest opacity-50 hover:opacity-100 hover:text-accent transition-all mb-12"
+const CaseStudyView = ({ project, onBack, onNext, isDarkMode }: { project: any, onBack: () => void, onNext: (project: any) => void, isDarkMode: boolean, key?: any }) => {
+  const nextProject = useMemo(() => {
+    const currentIndex = projects.findIndex(p => p.title === project.title);
+    return projects[(currentIndex + 1) % projects.length];
+  }, [project]);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="min-h-screen pt-32 pb-24 px-6 md:px-12"
     >
-      <ArrowUpRight className="rotate-180" size={16} />
-      Back to Work
-    </button>
+      <button 
+        onClick={onBack}
+        className="flex items-center gap-2 text-xs uppercase tracking-widest opacity-50 hover:opacity-100 hover:text-accent transition-all mb-12"
+      >
+        <ArrowLeft size={16} />
+        Back to Work
+      </button>
 
-    <div className="max-w-6xl mx-auto">
-      <div className="mb-16">
-        <p className="text-accent uppercase tracking-[0.3em] text-xs mb-4">{project.category}</p>
-        <h1 className="text-6xl md:text-[8vw] font-medium tracking-tighter leading-none mb-8">{project.title}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-ink/10 pt-8 mt-12">
-          <div>
-            <h4 className="text-xs uppercase tracking-widest opacity-50 mb-2">Role</h4>
-            <p className="text-sm">Lead UX/UI Design</p>
-          </div>
-          <div>
-            <h4 className="text-xs uppercase tracking-widest opacity-50 mb-2">Timeline</h4>
-            <p className="text-sm">4 Months</p>
-          </div>
-          <div>
-            <h4 className="text-xs uppercase tracking-widest opacity-50 mb-2">Client</h4>
-            <p className="text-sm">Global Tech Corp</p>
+      <div className="max-w-6xl mx-auto">
+        <div className="mb-16">
+          <p className="text-accent uppercase tracking-[0.3em] text-xs mb-4">{project.category}</p>
+          <h1 className="text-6xl md:text-[8vw] font-medium tracking-tighter leading-none mb-8">{project.title}</h1>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-ink/10 pt-8 mt-12">
+            <div>
+              <h4 className="text-xs uppercase tracking-widest opacity-50 mb-2">Role</h4>
+              <p className="text-sm">Lead UX/UI Design</p>
+            </div>
+            <div>
+              <h4 className="text-xs uppercase tracking-widest opacity-50 mb-2">Timeline</h4>
+              <p className="text-sm">4 Months</p>
+            </div>
+            <div>
+              <h4 className="text-xs uppercase tracking-widest opacity-50 mb-2">Client</h4>
+              <p className="text-sm">Global Tech Corp</p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="aspect-[21/9] overflow-hidden mb-24">
-        <img 
-          src={project.image} 
-          alt={project.title} 
-          className="w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-      </div>
+        <div className="aspect-[21/9] overflow-hidden mb-24">
+          <img 
+            src={project.image} 
+            alt={project.title} 
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-32">
-        <div className="md:col-span-4">
-          <h2 className="text-2xl font-medium mb-6">The Challenge</h2>
-        </div>
-        <div className="md:col-span-8">
-          <p className="text-xl opacity-70 leading-relaxed">
-            The primary objective was to redefine how users interact with complex data sets in real-time. The existing platform suffered from high cognitive load and a fragmented user journey that hindered productivity.
-          </p>
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-32">
-        <div className="md:col-span-4">
-          <h2 className="text-2xl font-medium mb-6">The Solution</h2>
-        </div>
-        <div className="md:col-span-8">
-          <p className="text-xl opacity-70 leading-relaxed mb-8">
-            We implemented a modular design system that prioritizes information hierarchy. By introducing a "Focus Mode" and intelligent data filtering, we reduced the time-to-action by 40%.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-32">
+          <div className="md:col-span-4">
+            <h2 className="text-2xl font-medium mb-6">The Challenge</h2>
+          </div>
+          <div className="md:col-span-8">
+            <p className="text-xl opacity-70 leading-relaxed">
+              The primary objective was to redefine how users interact with complex data sets in real-time. The existing platform suffered from high cognitive load and a fragmented user journey that hindered productivity.
+            </p>
           </div>
         </div>
-      </div>
 
-      <div className="bg-ink text-bg p-12 md:p-24 mb-32">
-        <h2 className="text-3xl md:text-5xl font-medium mb-12">Key Results</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <span className="text-6xl font-medium text-accent">40%</span>
-            <p className="opacity-70 mt-4 uppercase tracking-widest text-xs">Efficiency Increase</p>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-32">
+          <div className="md:col-span-4">
+            <h2 className="text-2xl font-medium mb-6">The Solution</h2>
           </div>
-          <div>
-            <span className="text-6xl font-medium text-accent">2.5x</span>
-            <p className="opacity-70 mt-4 uppercase tracking-widest text-xs">User Retention</p>
-          </div>
-          <div>
-            <span className="text-6xl font-medium text-accent">98%</span>
-            <p className="opacity-70 mt-4 uppercase tracking-widest text-xs">Satisfaction Rate</p>
+          <div className="md:col-span-8">
+            <p className="text-xl opacity-70 leading-relaxed mb-8">
+              We implemented a modular design system that prioritizes information hierarchy. By introducing a "Focus Mode" and intelligent data filtering, we reduced the time-to-action by 40%.
+            </p>
+            <div className="grid grid-cols-2 gap-4">
+              <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
+              <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="text-center py-24 border-t border-ink/10">
-        <p className="opacity-50 mb-8 uppercase tracking-widest text-xs">Next Project</p>
-        <h3 className="text-4xl md:text-6xl font-medium hover:text-accent cursor-pointer transition-colors">Lumina Mobile</h3>
+        <div className="bg-ink text-bg p-12 md:p-24 mb-32">
+          <h2 className="text-3xl md:text-5xl font-medium mb-12">Key Results</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div>
+              <span className="text-6xl font-medium text-accent">40%</span>
+              <p className="opacity-70 mt-4 uppercase tracking-widest text-xs">Efficiency Increase</p>
+            </div>
+            <div>
+              <span className="text-6xl font-medium text-accent">2.5x</span>
+              <p className="opacity-70 mt-4 uppercase tracking-widest text-xs">User Retention</p>
+            </div>
+            <div>
+              <span className="text-6xl font-medium text-accent">98%</span>
+              <p className="opacity-70 mt-4 uppercase tracking-widest text-xs">Satisfaction Rate</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="text-center py-24 border-t border-ink/10">
+          <p className="opacity-50 mb-8 uppercase tracking-widest text-xs">Next Project</p>
+          <h3 
+            onClick={() => onNext(nextProject)}
+            className="text-4xl md:text-6xl font-medium hover:text-accent cursor-pointer transition-colors"
+          >
+            {nextProject.title}
+          </h3>
+        </div>
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -169,34 +208,26 @@ export default function App() {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentView]);
-
-  const projects = [
-    {
-      title: "Aether Platform",
-      category: "UX / UI Design",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2000"
-    },
-    {
-      title: "Lumina Mobile",
-      category: "Product Strategy",
-      image: "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?auto=format&fit=crop&q=80&w=2000"
-    },
-    {
-      title: "Kinetix Brand",
-      category: "Visual Identity",
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=2000"
-    },
-    {
-      title: "Zenith Dashboard",
-      category: "Interface Design",
-      image: "https://images.unsplash.com/photo-1581291518062-c9a7941a3f34?auto=format&fit=crop&q=80&w=2000"
-    }
-  ];
+  }, [currentView, selectedProject]);
 
   const handleProjectClick = (project: any) => {
     setSelectedProject(project);
     setCurrentView('case-study');
+  };
+
+  const navigateToSection = (sectionId: string) => {
+    if (currentView !== 'home') {
+      setCurrentView('home');
+      // Wait for view transition before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
   };
 
   return (
@@ -209,8 +240,8 @@ export default function App() {
         <div className="flex items-center gap-8 md:gap-12">
           <div className="hidden md:flex gap-12 text-sm font-medium uppercase tracking-widest">
             <button onClick={() => setCurrentView('home')} className="hover:text-accent transition-colors">WORK</button>
-            <a href="#about" className="hover:text-accent transition-colors">ABOUT</a>
-            <a href="#contact" className="hover:text-accent transition-colors">CONTACT</a>
+            <button onClick={() => navigateToSection('about')} className="hover:text-accent transition-colors uppercase tracking-widest">ABOUT</button>
+            <button onClick={() => navigateToSection('contact')} className="hover:text-accent transition-colors uppercase tracking-widest">CONTACT</button>
           </div>
           
           <button 
@@ -248,8 +279,8 @@ export default function App() {
         className="fixed inset-0 bg-ink z-40 flex flex-col items-center justify-center gap-8 text-white md:hidden"
       >
         <button onClick={() => { setCurrentView('home'); setIsMenuOpen(false); }} className="text-4xl font-medium uppercase tracking-widest">WORK</button>
-        <a href="#about" onClick={() => setIsMenuOpen(false)} className="text-4xl font-medium uppercase tracking-widest">ABOUT</a>
-        <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-4xl font-medium uppercase tracking-widest">CONTACT</a>
+        <button onClick={() => navigateToSection('about')} className="text-4xl font-medium uppercase tracking-widest">ABOUT</button>
+        <button onClick={() => navigateToSection('contact')} className="text-4xl font-medium uppercase tracking-widest">CONTACT</button>
       </motion.div>
 
       <AnimatePresence mode="wait">
@@ -277,13 +308,6 @@ export default function App() {
               <p className="max-w-md text-lg md:text-xl text-ink/70 leading-relaxed">
                 Numo is a specialized design studio focused on high-end UX/UI solutions for forward-thinking companies.
               </p>
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="hidden md:block"
-              >
-                <div className="w-px h-24 bg-ink/20" />
-              </motion.div>
             </div>
           </motion.div>
         </section>
@@ -347,6 +371,7 @@ export default function App() {
             key="case-study"
             project={selectedProject} 
             onBack={() => setCurrentView('home')}
+            onNext={(nextProject) => setSelectedProject(nextProject)}
             isDarkMode={isDarkMode}
           />
         )}
@@ -356,8 +381,8 @@ export default function App() {
       <footer className="px-6 md:px-12 py-12 border-t border-ink/5 flex flex-col md:flex-row justify-between items-center gap-8 opacity-50 text-xs uppercase tracking-widest">
         <p>© Numo Digital Design</p>
         <div className="flex gap-8">
-          <a href="#" className="hover:text-accent transition-colors">Instagram</a>
-          <a href="#" className="hover:text-accent transition-colors">LinkedIn</a>
+          <a href="https://instagram.com/designwithnumo" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">Instagram</a>
+          <a href="https://www.linkedin.com/company/designwithnumo/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">LinkedIn</a>
         </div>
         <p>Based in Brazil</p>
       </footer>
