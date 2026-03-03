@@ -61,13 +61,15 @@ const ProjectCard = ({ title, category, image, index, onClick }: { title: string
     transition={{ duration: 0.8, delay: index * 0.1 }}
     className="group cursor-pointer mb-24 md:mb-32"
     onClick={onClick}
+    role="button"
+    aria-label={`View case study for ${title}`}
   >
     <div className="relative overflow-hidden aspect-[16/9] mb-6">
       <motion.img 
         whileHover={{ scale: 1.05 }}
         transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
         src={image} 
-        alt={title}
+        alt={`Preview of ${title} project - ${category}`}
         className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
         referrerPolicy="no-referrer"
       />
@@ -154,8 +156,8 @@ const CaseStudyView = ({ project, onBack, onNext, isDarkMode }: { project: any, 
               We implemented a modular design system that prioritizes information hierarchy. By introducing a "Focus Mode" and intelligent data filtering, we reduced the time-to-action by 40%.
             </p>
             <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
-              <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1000" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
+              <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=1000" alt="Design process and wireframing" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
+              <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=1000" alt="Final UI interface details" className="w-full aspect-square object-cover grayscale" referrerPolicy="no-referrer" />
             </div>
           </div>
         </div>
@@ -238,10 +240,10 @@ export default function App() {
           <Logo isDarkMode={isDarkMode} />
         </div>
         <div className="flex items-center gap-8 md:gap-12">
-          <div className="hidden md:flex gap-12 text-sm font-medium uppercase tracking-widest">
-            <button onClick={() => setCurrentView('home')} className="hover:text-accent transition-colors">WORK</button>
-            <button onClick={() => navigateToSection('about')} className="hover:text-accent transition-colors uppercase tracking-widest">ABOUT</button>
-            <button onClick={() => navigateToSection('contact')} className="hover:text-accent transition-colors uppercase tracking-widest">CONTACT</button>
+          <div className="hidden md:flex gap-12 text-sm font-medium uppercase tracking-widest" role="navigation">
+            <button onClick={() => setCurrentView('home')} className="hover:text-accent transition-colors" aria-label="Go to Work section">WORK</button>
+            <button onClick={() => navigateToSection('about')} className="hover:text-accent transition-colors uppercase tracking-widest" aria-label="Go to About section">ABOUT</button>
+            <button onClick={() => navigateToSection('contact')} className="hover:text-accent transition-colors uppercase tracking-widest" aria-label="Go to Contact section">CONTACT</button>
           </div>
           
           <button 
