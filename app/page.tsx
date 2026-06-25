@@ -117,6 +117,8 @@ export default function HomePage() {
           <h1 className="t-display reveal">
             Product design that gives shape to your idea
           </h1>
+        </div>
+        <div className="hero__bottom">
           <div className="hero__actions">
             <a href="#contact" className="btn btn--primary">
               Start a project
@@ -125,12 +127,12 @@ export default function HomePage() {
               See how we work
             </a>
           </div>
-        </div>
-        <div className="hero__services" aria-hidden="true">
-          <span className="hero__services-num">01/</span>
-          <span>Product Design</span>
-          <span>Prototyping</span>
-          <span>Strategy</span>
+          <div className="hero__services" aria-hidden="true">
+            <span className="hero__services-num">01/</span>
+            <span>Product Design</span>
+            <span>Prototyping</span>
+            <span>Strategy</span>
+          </div>
         </div>
       </section>
 

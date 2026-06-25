@@ -397,18 +397,24 @@ ul, ol {
   letter-spacing: -0.01em;
 }
 
+.hero__bottom {
+  position: absolute;
+  bottom: 56px;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .hero__actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
-  margin-top: 40px;
 }
 
 .hero__services {
-  position: absolute;
-  bottom: 56px;
-  right: var(--pad-x);
-  z-index: 2;
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -1266,17 +1272,21 @@ ul, ol {
   .hero__content {
     max-width: 100%;
     padding: 0 var(--pad-x);
-    margin-bottom: 100px;
+    margin-bottom: 160px;
     align-self: flex-end;
   }
 
-  .hero__actions {
-    margin-top: 24px;
+  .hero__bottom {
+    bottom: 24px;
+    left: var(--pad-x);
+    right: var(--pad-x);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
   }
 
   .hero__services {
-    bottom: 24px;
-    right: var(--pad-x);
+    text-align: left;
     font-size: 13px;
   }
 
