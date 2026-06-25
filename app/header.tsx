@@ -23,9 +23,6 @@ export function Header() {
 
   return (
     <header className="header">
-      <div className="header__blur" aria-hidden="true">
-        <span /><span /><span /><span /><span /><span /><span />
-      </div>
       <div className="header__inner">
         <a
           href="#"
