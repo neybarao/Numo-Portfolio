@@ -1269,20 +1269,30 @@ ul, ol {
     object-position: 60% center;
   }
 
+  .hero {
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 var(--pad-x) 24px;
+  }
+
   .hero__content {
+    position: relative;
     max-width: 100%;
-    padding: 0 var(--pad-x);
-    margin-bottom: 160px;
-    align-self: flex-end;
+    padding: 0;
+    margin-bottom: 0;
+    align-self: flex-start;
   }
 
   .hero__bottom {
-    bottom: 24px;
-    left: var(--pad-x);
-    right: var(--pad-x);
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
     flex-direction: column;
     align-items: flex-start;
-    gap: 24px;
+    gap: 20px;
+    margin-top: 24px;
+    padding-bottom: 8px;
   }
 
   .hero__services {
