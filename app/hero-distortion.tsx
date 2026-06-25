@@ -59,6 +59,8 @@ export function HeroDistortion() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    if (window.innerWidth <= 860) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 

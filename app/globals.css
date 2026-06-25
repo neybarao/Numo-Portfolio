@@ -1304,6 +1304,10 @@ ul, ol {
     font-size: 11px;
   }
 
+  .hero__canvas {
+    display: none;
+  }
+
   .statement__inner {
     grid-template-columns: 1fr;
     gap: 32px;
