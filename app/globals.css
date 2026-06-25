@@ -1208,10 +1208,38 @@ ul, ol {
   color: var(--accent);
 }
 
+/* ===== MOBILE NAV CLOSE ===== */
+.mobile-nav__close {
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-dark);
+  transition: opacity var(--dur-fast);
+}
+
+.mobile-nav__close:hover {
+  opacity: 0.6;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 860px) {
   :root {
     --pad-x: 20px;
+  }
+
+  .t-display {
+    font-size: clamp(36px, 12vw, 56px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  .t-headline {
+    font-size: clamp(28px, 8vw, 44px);
   }
 
   .section,
@@ -1219,7 +1247,6 @@ ul, ol {
   .services,
   .case-study,
   .cta-section,
-  #faq,
   #how-we-work {
     padding: 80px 0;
   }
@@ -1233,7 +1260,11 @@ ul, ol {
   }
 
   .break-section {
-    padding: 100px 0;
+    padding: 80px 0;
+  }
+
+  .break-section__quote {
+    font-size: clamp(22px, 6vw, 36px);
   }
 
   .header__nav {
@@ -1248,16 +1279,30 @@ ul, ol {
     display: flex;
   }
 
+  .hero {
+    min-height: 100svh;
+  }
+
   .hero__content {
     max-width: 100%;
     padding: 0 var(--pad-x);
-    margin-bottom: 140px;
+    margin-bottom: 200px;
     align-self: flex-end;
   }
 
+  .hero__actions {
+    position: static;
+    margin-top: 32px;
+  }
+
   .hero__services {
-    bottom: 32px;
+    bottom: 24px;
     right: var(--pad-x);
+    font-size: 13px;
+  }
+
+  .hero__services-num {
+    font-size: 11px;
   }
 
   .statement__inner {
@@ -1286,7 +1331,11 @@ ul, ol {
   }
 
   .service-row__number {
-    font-size: 48px;
+    font-size: 40px;
+  }
+
+  .service-row__name {
+    font-size: 22px;
   }
 
   .methods__grid {
@@ -1314,13 +1363,18 @@ ul, ol {
   }
 
   .consent {
-    border-radius: 0;
     flex-direction: column;
     text-align: center;
-    bottom: 16px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: none;
+    max-width: 100%;
+    border-radius: 0;
+    padding: 16px 20px;
   }
 
   .lead {
-    margin-bottom: 48px;
+    margin-bottom: 40px;
   }
 }
