@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neybarao.github.io/Numo-Portfolio/sitemap.xml
+Sitemap: https://designwithnumo.com/sitemap.xml
