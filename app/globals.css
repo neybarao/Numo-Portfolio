@@ -62,9 +62,9 @@ ol {
 
 /* ===== DESIGN SYSTEM ===== */
 :root {
-  --accent: #FF6E25;
-  --accent-700: #e55e1a;
-  --accent-glow: rgba(255, 110, 37, 0.15);
+  --accent: #FF4E26;
+  --accent-700: #e5411e;
+  --accent-glow: rgba(255, 78, 38, 0.15);
   --paper: #000000;
   --paper-2: #0a0a0a;
   --ink: #F5F5F5;
@@ -187,7 +187,7 @@ ol {
 
 .btn--primary {
   background: var(--accent);
-  color: #fff;
+  color: #000;
 }
 
 .btn--primary:hover {
@@ -487,9 +487,9 @@ ol {
   transform: rotate(-3deg);
   position: relative;
   z-index: 1;
-  margin: 0 -80px;
-  padding-left: 80px;
-  padding-right: 80px;
+  margin: 0 -10vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
 }
 
 .marquee__track {
@@ -592,7 +592,7 @@ ol {
 .why__icon {
   width: 44px;
   height: 44px;
-  background: rgba(255, 110, 37, 0.1);
+  background: rgba(255, 78, 38, 0.1);
   border-radius: 0;
   display: flex;
   align-items: center;
@@ -695,7 +695,7 @@ ol {
 .break-section__bg {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255, 110, 37, 0.04) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255, 78, 38, 0.04) 0%, transparent 70%);
 }
 
 .break-section__quote {
@@ -945,7 +945,7 @@ ol {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(255, 110, 37, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 70% 50% at 50% 60%, rgba(255, 78, 38, 0.05) 0%, transparent 70%);
   pointer-events: none;
 }
 
