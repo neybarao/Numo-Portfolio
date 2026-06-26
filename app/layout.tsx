@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Numo — Product Design Studio",
+  title: "Numo — Product Design Studio | UX/UI, Prototyping & Strategy",
   description:
     "We help companies ideate, design and prototype digital products, from concept to navigable prototype. UX/UI design studio focused on results.",
   keywords: [
@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     "design system",
     "SaaS design",
     "interface design",
+    "product strategy",
+    "digital product design",
+    "brand identity",
   ],
   authors: [{ name: "Numo" }],
   robots: "index, follow",
@@ -31,15 +34,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://designwithnumo.com",
     siteName: "Numo",
-    title: "Numo — Product Design Studio",
+    title: "Numo — Product Design Studio | UX/UI, Prototyping & Strategy",
     description:
-      "Product design that gives shape to your idea. From concept to navigable prototype.",
+      "We design digital products from concept to prototype. UX/UI, design systems, strategy and branding for forward-thinking companies.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Numo — Product Design Studio",
+    title: "Numo — Product Design Studio | UX/UI, Prototyping & Strategy",
     description:
-      "Product design that gives shape to your idea. From concept to navigable prototype.",
+      "We design digital products from concept to prototype. UX/UI, design systems, strategy and branding for forward-thinking companies.",
   },
 };
 

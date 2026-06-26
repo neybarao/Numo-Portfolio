@@ -161,6 +161,7 @@ export default function HomePage() {
       </section>
 
       {/* ── 3. Marquee ──────────────────────────────────────── */}
+      <div className="marquee-wrap">
       <div className="marquee" aria-label="Keywords">
         <div className="marquee__track">
           {[...marqueeKeywords, ...marqueeKeywords].map((kw, i) => (
@@ -173,21 +174,19 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+      </div>
 
-      {/* ── 4. Stacking Cards ──────────────────────────────── */}
-      <section className="stack" aria-label="Portfolio">
-        <div className="stack__wrap">
-          <div className="stack__card" data-stack-card>
-            <div className="stack__img" style={{ backgroundColor: "#1a1a1a" }} />
-            <span className="stack__tag">Interface</span>
+      {/* ── 4. Portfolio Cards ──────────────────────────────── */}
+      <section className="portfolio" aria-label="Portfolio">
+        <div className="portfolio__grid">
+          <div className="portfolio__card reveal" style={{ backgroundColor: "#1a1a1a" }}>
+            <span className="portfolio__tag">Interface</span>
           </div>
-          <div className="stack__card" data-stack-card>
-            <div className="stack__img" style={{ backgroundColor: "#151515" }} />
-            <span className="stack__tag">Product</span>
+          <div className="portfolio__card reveal" style={{ backgroundColor: "#151515" }}>
+            <span className="portfolio__tag">Product</span>
           </div>
-          <div className="stack__card" data-stack-card>
-            <div className="stack__img" style={{ backgroundColor: "#111111" }} />
-            <span className="stack__tag">Identity</span>
+          <div className="portfolio__card reveal" style={{ backgroundColor: "#111111" }}>
+            <span className="portfolio__tag">Identity</span>
           </div>
         </div>
       </section>
