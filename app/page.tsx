@@ -174,29 +174,20 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* ── 4. Triptych ─────────────────────────────────────── */}
-      <section className="triptych" aria-label="Triptych">
-        <div className="triptych__grid">
-          <div className="triptych__item reveal stagger-1">
-            <div
-              className="triptych__img"
-              style={{ backgroundColor: "#1a1a1a" }}
-            />
-            <span className="triptych__tag">Interface</span>
+      {/* ── 4. Stacking Cards ──────────────────────────────── */}
+      <section className="stack" aria-label="Portfolio">
+        <div className="stack__wrap">
+          <div className="stack__card" data-stack-card>
+            <div className="stack__img" style={{ backgroundColor: "#1a1a1a" }} />
+            <span className="stack__tag">Interface</span>
           </div>
-          <div className="triptych__item reveal stagger-2">
-            <div
-              className="triptych__img"
-              style={{ backgroundColor: "#151515" }}
-            />
-            <span className="triptych__tag">Product</span>
+          <div className="stack__card" data-stack-card>
+            <div className="stack__img" style={{ backgroundColor: "#151515" }} />
+            <span className="stack__tag">Product</span>
           </div>
-          <div className="triptych__item reveal stagger-3">
-            <div
-              className="triptych__img"
-              style={{ backgroundColor: "#111111" }}
-            />
-            <span className="triptych__tag">Identity</span>
+          <div className="stack__card" data-stack-card>
+            <div className="stack__img" style={{ backgroundColor: "#111111" }} />
+            <span className="stack__tag">Identity</span>
           </div>
         </div>
       </section>

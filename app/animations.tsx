@@ -29,6 +29,23 @@ export function Animations() {
       });
     }
 
+    const cards = gsap.utils.toArray<HTMLElement>("[data-stack-card]");
+    cards.forEach((card, i) => {
+      if (i === cards.length - 1) return;
+
+      gsap.to(card, {
+        scale: 0.9 + i * 0.025,
+        opacity: 0.5,
+        filter: "brightness(0.6)",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 80px",
+          end: "bottom 80px",
+          scrub: 0.5,
+        },
+      });
+    });
+
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
