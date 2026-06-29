@@ -2,7 +2,6 @@ import { Animations } from "./animations";
 import { LoadingScreen } from "./loading-screen";
 import { ConsentBanner } from "./consent-banner";
 import { Header } from "./header";
-import { HeroDistortion } from "./hero-distortion";
 
 const services = [
   {
@@ -108,10 +107,9 @@ export default function HomePage() {
         <img
           src="/hero-bg.png"
           alt=""
-          className="hero__img hero__img--fallback"
+          className="hero__img"
           aria-hidden="true"
         />
-        <HeroDistortion />
         <div className="hero__overlay" />
         <div className="hero__content">
           <h1 className="t-display reveal">
@@ -506,14 +504,6 @@ export default function HomePage() {
             >
               hello@designwithnumo.com
             </a>
-            <a
-              href="https://wa.me/351000000000"
-              className="cta-section__link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp
-            </a>
           </div>
         </div>
       </section>
@@ -544,7 +534,6 @@ export default function HomePage() {
               <a href="mailto:hello@designwithnumo.com">
                 hello@designwithnumo.com
               </a>
-              <a href="tel:+351000000000">+351 000 000 000</a>
               <a
                 href="https://designwithnumo.com"
                 target="_blank"
